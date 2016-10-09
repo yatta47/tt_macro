@@ -1,0 +1,33 @@
+; sample macro of Tera Term
+;
+; File: ssh2login.ttl
+; Description: auto login with SSH2 protocol
+; Environment: generic
+; Update: 2004/12/4
+; Author: Yutaka Hirata
+username = 'UserName'
+passwd = 'PassWord'
+hostname = 'IP Address'
+keyfile = 'Key File Name'
+; ex) username = 'hogehoge'
+; ex) passwd = 'hogehoge'
+; ex) hostname = '192.168.99.100'
+; ex) keyfile = 'C:\Users\hogehoge\Documents\tools\ssl\Linux.pem'
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+msg = 'Enter password for user '
+strconcat msg username
+msg = hostname
+strconcat msg ':22 /ssh /auth=publickey /user='
+strconcat msg username
+strconcat msg ' /passwd='
+strconcat msg passwd
+strconcat msg ' /keyfile='
+strconcat msg keyfile
+connect msg
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; vagrant Login process
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+remote_prompt = '$' ;
+vagrant_command = 'cd vagrant/ ; vagrant ssh'
+wait remote_prompt
+sendln vagrant_command
