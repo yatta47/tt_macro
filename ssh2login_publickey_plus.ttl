@@ -1,10 +1,7 @@
 ; sample macro of Tera Term
 ;
-; File: ssh2login.ttl
-; Description: auto login with SSH2 protocol
-; Environment: generic
-; Update: 2004/12/4
-; Author: Yutaka Hirata
+; File: ssh2login_publickey_plus.ttl
+; Base_File: ssh2login.ttl
 username = 'UserName'
 passwd = 'PassWord'
 hostname = 'IP Address'
